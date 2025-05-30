@@ -1,4 +1,3 @@
-// Api.js
 import axios from 'axios';
 
 const accessKey = 'QFDfgdB3vWLYAcMuQXkqOfxEDvhmPynQJPoURZ6SS9U'; // ← Đổi thành key của bạn
