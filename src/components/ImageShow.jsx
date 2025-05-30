@@ -1,9 +1,5 @@
 function ImageShow({ image }) {
-  return (
-    <div>
-      <img src={image.urls.small} alt={image.alt_description} />
-    </div>
-  );
+  return <img src={image.urls.small} alt={image.alt_description} style={{ width: '200px' }} />;
 }
 
 export default ImageShow;

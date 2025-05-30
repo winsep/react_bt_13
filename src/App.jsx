@@ -6,17 +6,20 @@ import unsplash from './Api';
 function App() {
   const [images, setImages] = useState([]);
 
-  const handleSubmit = async (term) => {
-    const response = await unsplash.get('/search/photos', {
-      params: { query: term },
-    });
-    setImages(response.data.results);
+  const searchImages = async (term) => {
+    try {
+      const res = await unsplash.get('/search/photos', {
+        params: { query: term },
+      });
+      setImages(res.data.results);
+    } catch (err) {
+      console.error('Lỗi API:', err);
+    }
   };
 
   return (
     <div>
-      <h1>Tìm ảnh với Unsplash API</h1>
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar onSubmit={searchImages} />
       <ImageList images={images} />
     </div>
   );

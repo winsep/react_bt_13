@@ -3,23 +3,20 @@ import { useState } from 'react';
 function SearchBar({ onSubmit }) {
   const [term, setTerm] = useState('');
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(term);
+    if (term.trim()) onSubmit(term);
   };
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit} style={{ display: 'flex', gap: '10px' }}>
-        <input 
-          type="text" 
-          placeholder="Tìm kiếm ảnh..." 
-          value={term}
-          onChange={(e) => setTerm(e.target.value)}
-        />
-        <button type="submit">Tìm kiếm</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '8px' }}>
+      <input
+        value={term}
+        onChange={(e) => setTerm(e.target.value)}
+        placeholder="Tìm kiếm ảnh..."
+      />
+      <button type="submit">Tìm</button>
+    </form>
   );
 }
 
